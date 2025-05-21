@@ -1,6 +1,6 @@
 const express = require("express");
 const routes = express.Router();
-const User = require('../model/model');
+const User = require('../model/User');
 
 
 
@@ -30,19 +30,23 @@ routes.post("/api/register", async (req, res) => {
   try {
     const { username, email, password } = req.body;
 
-    // Properly await and pass object to findOne
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res.send("User already exists !!");
-    }
-
+    /* const existingUser = await User.findOne({ email });
+     if (existingUser) {
+       return res.send("User already exists !!");
+     }
+*/
     const newUser = new User({ username, email, password });
+    console.log("->ye h data: ");
+    console.log(newUser);
     await newUser.save();
 
+    res.send("ho gya registor");
+    /*
     res.redirect("/api/index");
+    */
   } catch (err) {
     console.error(err);
-    res.status(500).send("Server Error mere bhai");
+    res.status(500).send("Server Error h mere bhai");
   }
 });
 
