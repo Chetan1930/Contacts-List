@@ -15,7 +15,8 @@ app.set('views', path.join(__dirname, 'views'));
 
 
 
-app.use('/',routes);
+app.use('/api',routes);
+
 app.listen(3000,()=>console.log("Server started "));
 
 

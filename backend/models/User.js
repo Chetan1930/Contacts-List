@@ -13,9 +13,9 @@ const userSchema = new mongoose.Schema({
     trim: true,
     lowercase: true,
   },
-  password: {
+  phone: {
     type: String,
-    required: [true, "Password is required"],
+    required: [true, "Phone Number is required"],
   },
 }, {
   timestamps: true // Adds createdAt and updatedAt fields
