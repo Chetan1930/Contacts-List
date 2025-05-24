@@ -5,7 +5,6 @@ const User = require('../models/User');
 
 
 // GET: Render login page
-/*
 routes.get("/api/login", (req, res) => {
   res.render("login");
 });
@@ -14,8 +13,6 @@ routes.get("/api/index", (req, res) => {
   res.render("index");
 });
 
-
-
 // POST: Handle login form submission
 routes.post("/api/login", (req, res) => {
   // handle login logic here...
@@ -23,8 +20,6 @@ routes.post("/api/login", (req, res) => {
   res.redirect("/api/index");
   });
   
-  */
- 
  // GET: Render register page
  routes.get("/api/register", (req, res) => {
    res.render("register");
