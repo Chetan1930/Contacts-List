@@ -66,3 +66,29 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 1rem;
+  font-family: sans-serif;
+}
+
+.form input {
+  margin: 0.5rem;
+  padding: 0.4rem;
+  width: 95%;
+}
+
+button {
+  margin: 0.3rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.contact-card {
+  border: 1px solid #ccc;
+  margin: 0.5rem 0;
+  padding: 0.7rem;
+  border-radius: 5px;
+}

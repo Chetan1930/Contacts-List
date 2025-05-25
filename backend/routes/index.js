@@ -40,24 +40,28 @@ routes.post("/contacts", async (req, res) => {
   
 
  // POST: Handle register form submission
- routes.put("/contact/:id", async (req, res) => {
-  try{
-    const {username, email, phone }= req.body;
+ routes.put("/contacts/:id", async (req, res) => {
+  try {
+    const { username, email, phone } = req.body;
 
-    const updateContact = await User.findByIdAndUpdate(req.params.id, {username,email, phone}, {new:true, runValidators:true});
+    const updateContact = await User.findByIdAndUpdate(
+      req.params.id,
+      { username, email, phone },
+      { new: true, runValidators: true }
+    );
 
-    if(!updateContact){
-      return res.status(404).json({message: "ye contact toh h hi nhi database mei"});
+    if (!updateContact) {
+      return res.status(404).json({ message: "ye contact toh h hi nhi database mei" });
     }
-     res.status(200).json(updatedContact);
-  }
-  catch(err){
-     res.status(500).json({message: "Update nhi ho pa rha hain", err})
+
+    res.status(200).json(updateContact);  
+  } catch (err) {
+    res.status(500).json({ message: "Update nhi ho pa rha hain", err });
   }
 });
 
 
-routes.delete('/contact/:id', async(req,res)=>{
+routes.delete('/contacts/:id', async(req,res)=>{
   try{
     const deletedContact = await User.findByIdAndDelete(req.params.id);
 
