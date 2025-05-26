@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import '../App.css';
 
 const ContactList = () => {
   const [contacts, setContacts] = useState([]);
@@ -27,8 +28,7 @@ const ContactList = () => {
 
   return (
     <div>
-      <h2>All Contacts</h2>
-      <Link to="/add"><button>Add New Contact</button></Link>
+      <h2>All Contacts</h2>  
       <div className="contact-list">
         {contacts.map((c) => (
           <div key={c._id} className="contact-card">

@@ -41,6 +41,10 @@ routes.post("/contacts", async (req, res) => {
     if (!username || !email || !phone) {
       return res.status(400).json({ error: "All fields are required" });
     }
+    if(User.find({email})){
+      console.log("duplicate Exists");
+      return res.status(401).json({error:"Duplicate ho gya ye toh "});
+    }
 
     const newUser = await User.create({ username, email, phone });
     console.log(newUser);

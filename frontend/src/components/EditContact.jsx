@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import '../App.css';
 
 const EditContact = () => {
   const { id } = useParams();
@@ -12,12 +13,12 @@ const EditContact = () => {
 useEffect(() => {
   const fetchContact = async () => {
     try {
-      const res = await axios.get(`/api/contacts/${id}`);
-      const contact = res.data[0];
+      const res = await axios.get(`/api/contacts/${id}`);      
+      const contact = res.data[0];    
       setFormData({
-        username: contact.username || '',
-        email: contact.email || '',
-        phone: contact.phone || '',
+        username: contact.username,
+        email: contact.email,
+        phone: contact.phone,
       });
     } catch (err) {
       console.error("Error fetching contact:", err);
@@ -47,7 +48,7 @@ if (isLoading) return <p>Loading...</p>;
   return (
     <div>
       <h2>Edit Contact</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="contact-form">
         <input
           name="username"
           value={formData.username}
