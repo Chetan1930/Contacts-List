@@ -17,6 +17,20 @@ routes.get('/contacts', async (req,res)=>{
   }
 });
 
+routes.get('/contacts/:id', async (req,res)=>{
+  try{
+      const allData= await User.find({_id: req.params.id});
+      if(allData.length === 0){
+        return res.status(404).json({message: "ye contact toh h hi nhi database mei"});
+      }       
+      res.json(allData);
+
+  }
+  catch(err){
+    ()=>console.error("kuch toh dikkat ho rhi h fetch krne mei ",err)
+  }
+});
+
 
 
 routes.post("/contacts", async (req, res) => {

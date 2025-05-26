@@ -1,42 +1,22 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import ContactForm from './components/ContactForm';
+// App.jsx
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import AddContact from './components/AddContact';
+import EditContact from './components/EditContact';
 import ContactList from './components/ContactList';
 
-const API = 'api/contacts';
-
-const App = () => {
-  const [contacts, setContacts] = useState([]);
-  const [contactToEdit, setContactToEdit] = useState(null);
-
-  const fetchContacts = async () => {
-    try {
-      const res = await axios.get(API);
-      setContacts(res.data);
-    } catch (err) {
-      console.error('Error fetching contacts:', err);
-    }
-  };
-
-  useEffect(() => {
-    fetchContacts();
-  }, []);
-
+function App() {
   return (
-    <div className="container">
-      <h1>📱 Contact Book</h1>
-      <ContactForm
-        contactToEdit={contactToEdit}
-        refreshContacts={fetchContacts}
-        clearEdit={() => setContactToEdit(null)}
-      />
-      <ContactList
-        contacts={contacts}
-        refreshContacts={fetchContacts}
-        setEditContact={setContactToEdit}
-      />
-    </div>
+     
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<ContactList />} />
+        <Route path="/add" element={<AddContact />} />
+        <Route path="/edit/:id" element={<EditContact />} />
+      </Routes>
+    </Router>
   );
-};
+}
 
 export default App;
